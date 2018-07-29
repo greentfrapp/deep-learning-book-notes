@@ -42,7 +42,7 @@ with respective eigenvalues of 3 and 2, since
 
 ![\begin{bmatrix}3&0\\0&2\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix}=2\begin{bmatrix}0\\1\end{bmatrix}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D3%260%5C%5C0%262%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D%3D2%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D)
 
-We then adopt the view that a matrix multiplication can be seen as a space transformation.
+In the following examples, we then adopt the view that a matrix multiplication can be seen as a space transformation.
 
 Suppose we have four vectors
 
@@ -100,5 +100,5 @@ As a visual example, if we have a cup in a 3D space and scale this space by mult
 
 Finally, if any eigenvalue is zero then the resulting volume will be zero as well.
 
-`page 49` Proof by induction for PCA.
+`page 49` ToDo: Proof by induction for PCA.
 
