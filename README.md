@@ -8,5 +8,5 @@ Unlike the [Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd
 
 ## Contents
 
-[1 Introduction](tree/master/1_Introduction)
-[2 Linear Algebra](tree/master/2_Linear_Algebra)
+- [1 Introduction](tree/master/1_Introduction)
+- [2 Linear Algebra](tree/master/2_Linear_Algebra)
