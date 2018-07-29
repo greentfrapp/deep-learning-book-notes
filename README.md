@@ -6,3 +6,7 @@ A bit of context: Been dabbling in AI research but largely self-taught so far, w
 
 Unlike the [Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html) textbook (Sutton & Barto), the Deep Learning textbook does not contain any exercises. Instead, I will attempt to implement the algorithms in Python code when appropriate.
 
+## Contents
+
+[1 Introduction](tree/master/1_Introduction)
+[2 Linear Algebra](tree/master/2_Linear_Algebra)
