@@ -44,7 +44,7 @@ with respective eigenvalues of 3 and 2, since
 
 In the following examples, we then adopt the view that a matrix multiplication can be seen as a space transformation.
 
-Suppose we have four vectors
+Suppose we have four vectors (the two eigenvectors and two random vectors)
 
 ![\begin{bmatrix}1\\0\end{bmatrix},\begin{bmatrix}0\\1\end{bmatrix},\begin{bmatrix}1\\1\end{bmatrix},\begin{bmatrix}-1\\2\end{bmatrix}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D1%5C%5C0%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D1%5C%5C1%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D-1%5C%5C2%5Cend%7Bbmatrix%7D)
 
@@ -74,7 +74,7 @@ After some thought, we can see that a possible set of eigenvectors are
 
 with respective eigenvalues of 1.5 and 0.5.
 
-Suppose again we have four vectors
+Suppose again we have four vectors (the two eigenvectors and two random vectors)
 
 ![\begin{bmatrix}0.6\\0.8\end{bmatrix},\begin{bmatrix}0.8\\-0.6\end{bmatrix},\begin{bmatrix}1\\0\end{bmatrix},\begin{bmatrix}0\\1\end{bmatrix}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D0.6%5C%5C0.8%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D0.8%5C%5C-0.6%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D1%5C%5C0%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D)
 
