@@ -1,8 +1,10 @@
 # 1 Introduction
 
-Page 2 on Cyc (Lenat and Guha, 1989)
+`page 2` Cyc's story (Linde, 1992) of not recognizing "FredWhileShaving" as a person is used to illustrate a pitfall of the knowledge-base approach to AI. The nature of the mistake is not explicitly described, probably because it seems too ludicrous a mistake and it fits the caricature of dumb inflexible robots in movies. But is it truly a pitfall? Consider prevalent debates on the humanity of cyborgs. Could it be that Cyc's concern here is not mistaken but merely premature? Furthermore, are today's algorithms any better? With reference to Gary Marcus's [essay](https://arxiv.org/abs/1801.00631) and numerous papers on adversarial attacks, today's deep learning feels equally brittle, while being less understandable.
 
-Page 2 "AI systems need the ability to acquire their own knowledge"
+`page 2` 
+> AI systems need the ability to acquire their own knowledge
+
 - Although to a certain extent, the algorithms and network architectures impose priors and biases
 - Current resurgence in symbolic programming
 
