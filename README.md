@@ -1,4 +1,4 @@
-#deep-learning-book-notes
+# deep-learning-book-notes
 
 A record of my notes as I go through the [Deep Learning](https://www.deeplearningbook.org/) textbook.
 

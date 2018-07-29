@@ -1,0 +1,23 @@
+# 1 Introduction
+
+Page 2 on Cyc (Lenat and Guha, 1989)
+
+Page 2 "AI systems need the ability to acquire their own knowledge"
+- Although to a certain extent, the algorithms and network architectures impose priors and biases
+- Current resurgence in symbolic programming
+
+Page 4 Representation Learning - Interpretation and other problems?
+
+Page 13 "intended to be computational models of biological learning" See Hinton's paper on biologically plausible mechanisms and the NIPS paper on Direct Feedback. Also some comments on the energy efficiency and size of the brain relative to its memory and processing power
+
+Page 14 Interesting weight update algorithms eg. WINNOW
+
+Page 15 First paragraph on monitoring neurons - see Google Brain's research on neuron mapping
+
+Page 15 ReLU - note to self: understand more about differences between sigmoid, tanh, relu, leaky relu etc. - later in Chapter 6? Also see paper from Google Brain on searching for activation function
+
+Page 16 Distributed representation - Interesting, never really thought about it this way. It seems extremely nonintuitive to encode the first example (9 combinations) although that might be a bias due to my exposure to present-day deep learning. How does this relate to current deep learning systems?
+
+Page 25 Read Neural Turing Machine paper
+
+Think about demonstration of transferring RL from simulation to real robotics using RPi or Arduino
