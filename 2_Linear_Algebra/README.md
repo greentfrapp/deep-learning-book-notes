@@ -94,7 +94,7 @@ Hence, intuitively, the eigenvectors represent the main axes of the scaling tran
 
 With reference to the two matrices above, the determinant for the first is 6 and for the second is 0.75. If we take a look at the dashed boxes drawn in the graphs, we see that in the first example, the area of the second dashed box is 6 times that of the first dashed box. Likewise in the second example, the area of the second dashed box is 0.75 times that of the first.
 
-This makes perfect sense if we consider the eigenvalues as the magnitude of scaling, since the product of eigenvalues then represent the change in volume (area for 2D-space) due to the scaling. 
+This makes perfect sense if we consider the eigenvalues as the magnitude of scaling a single axis, since the product of eigenvalues then represent the change in volume (area for 2D-space) due to scaling on all the axes. 
 
 As a visual example, if we have a cup in a 3D space and scale this space by multiplying it with a matrix of determinant 2, the newly-scaled 3D space will have a cup that has twice the volume of the original. 
 
