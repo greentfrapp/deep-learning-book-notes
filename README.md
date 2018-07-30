@@ -12,3 +12,4 @@ Unlike the [Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd
 - [2 Linear Algebra](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/2_Linear_Algebra)
 - [3 Probability and Information Theory](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/3_Probability)
 - [4 Numerical Computation](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/4_Numerical_Computation)
+- [5 Machine Learning Basics](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/5_Machine_Learning_Basics)
