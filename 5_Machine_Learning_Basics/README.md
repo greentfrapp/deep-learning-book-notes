@@ -94,3 +94,6 @@ Suppose we have an untrained model, the possible values of the model's parameter
 
 `page 141` On a side note, [here's](http://www.r2d3.us/visual-intro-to-machine-learning-part-2/) a nice visual explanation of decision trees.
 
+`page 149` An interesting comparison of deep learning with SGD to kernel methods. The cost per update is independent of the size of the training data (but dependent on the batch size and size of the model). In contrast, kernel methods typically require computing an m x m matrix where m is the size of the training data (eg. SVM). From that perspective, deep learning is a far more scalable way of training on huge datasets.
+
+ 
