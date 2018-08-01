@@ -13,3 +13,4 @@ Unlike the [Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd
 - [3 Probability and Information Theory](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/3_Probability)
 - [4 Numerical Computation](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/4_Numerical_Computation)
 - [5 Machine Learning Basics](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/5_Machine_Learning_Basics)
+- [6 Deep Feedforward Networks](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/6_Deep_Feedforward_Networks)
