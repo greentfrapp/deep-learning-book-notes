@@ -14,7 +14,7 @@ As mentioned in chapter 1, the representation of sample has a huge impact on the
 
 > For example, the features of an image are usually the values of the pixels in the image.
 
-It is straightforward to directly represent a digital image with the pixel values ie. a 28x28 image has 784 pixels and can be represented as a 784-dimensional vector. It can be more effective to first normalize the values of the image, since typical RGB images have pixel values of datatype `uint8` (the possible values are integers spanning 0 to 255). 
+It is straightforward to directly represent a digital image with the pixel values ie. a 28x28 image has 784 pixels, each with 3 channels and can be represented as a 2352-dimensional vector or more typically as a tensor of shape 28x28x3. It can be more effective to first normalize the values of the image, since typical RGB images have pixel values of datatype `uint8` (the possible values are integers spanning 0 to 255). 
 
 There has also been some work done that encode the pixel values as one-hot vectors, where each channel value is represented with a 256-dimensional vector ([van den Oord et al., 2016a](https://arxiv.org/abs/1601.06759)) ([van den Oord et al., 2016b](https://arxiv.org/abs/1606.05328)) ([Parmar et al., 2018](https://arxiv.org/abs/1802.05751)).
 
