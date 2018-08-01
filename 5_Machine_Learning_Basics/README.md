@@ -68,7 +68,7 @@ The figure from [this](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_trade
 
 > For example, it is prone to numerical underflow.
 
-Callback to Chapter 4. Here the underflow occurs if we evaluate across too many data samples, since probability/likelihood ![p](http://latex.codecogs.com/gif.latex?p) is always less than or equal to 1 (although more than or equal to 0) and ![\text{lim}_{m\rightarrow\infty}p^m=0](http://latex.codecogs.com/gif.latex?%5Ctext%7Blim%7D_%7Bm%5Crightarrow%5Cinfty%7Dp%5Em%3D0).
+Callback to Chapter 4. Here the underflow occurs if we evaluate across too many data samples, since probability/likelihood ![p(x^{(i)})](https://latex.codecogs.com/gif.latex?p%28x%5E%7B%28i%29%7D%29) is always less than or equal to 1 (although more than or equal to 0) and ![\text{lim}_{m\rightarrow\infty}\prod_{i=1}^mp(x^{(i)})](https://latex.codecogs.com/gif.latex?%5Ctext%7Blim%7D_%7Bm%5Crightarrow%5Cinfty%7D%5Cprod_%7Bi%3D1%7D%5Emp%28x%5E%7B%28i%29%7D%29).
 
 `page 129`
 
