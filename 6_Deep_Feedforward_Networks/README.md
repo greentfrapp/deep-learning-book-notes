@@ -38,7 +38,7 @@ Now, if we allow the algorithm to optimize the variance/standard deviation as we
 
 > If we begin with the assumption that the unnormalized log probabilities are linear in y and z [...]
 
-Does the assumption make sense? Recall that the output is a Bernoulli distribution over a binary variable, which means ![y=0](http://latex.codecogs.com/gif.latex?y%3D0) or ![y=1](http://latex.codecogs.com/gif.latex?y%3D1). Then ![\log\tilde{P}(y)=yz](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%29%3Dyz) simply means that ![\log\tilde{P}(y=0)=0](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D0%29%3D0) or ![\log\tilde{P}(y=1)=z](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D1%29%3Dz). Also recall that ![\tilde{P}(y)](http://latex.codecogs.com/gif.latex?%5Ctilde%7BP%7D%28y%29) refers to the unnormalized probability distribution. So it is okay that ![\tilde{P}(y=0)=1](http://latex.codecogs.com/gif.latex?%5Ctilde%7BP%7D%28y%3D0%29%3D1) and ![\tilde{P}(y=1)=\exp(z)](http://latex.codecogs.com/gif.latex?%5Ctilde%7BP%7D%28y%3D1%29%3D%5Cexp%28z%29), as long as we normalize it later. So setting ![\log\tilde{P}(y)=yz](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%29%3Dyz) just means that we hold ![\log\tilde{P}(y=0)=0](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D0%29%3D0) constant while allowing the algorithm to optimize the ![z](http://latex.codecogs.com/gif.latex?z) term in ![\log\tilde{P}(y=1)=z](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D1%29%3Dz).
+Does the assumption make sense? Recall that the output is a Bernoulli distribution over a binary variable, which means ![y=0](http://latex.codecogs.com/gif.latex?y%3D0) or ![y=1](http://latex.codecogs.com/gif.latex?y%3D1). Then ![\log\tilde{P}(y)=yz](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%29%3Dyz) simply means that ![\log\tilde{P}(y=0)=0](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D0%29%3D0) or ![\log\tilde{P}(y=1)=z](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D1%29%3Dz). Also recall that ![\tilde{P}(y)](http://latex.codecogs.com/gif.latex?%5Ctilde%7BP%7D%28y%29) refers to the unnormalized probability distribution. So it is okay that ![\tilde{P}(y=0)=1](http://latex.codecogs.com/gif.latex?%5Ctilde%7BP%7D%28y%3D0%29%3D1) and ![\tilde{P}(y=1)=\exp(z)](http://latex.codecogs.com/gif.latex?%5Ctilde%7BP%7D%28y%3D1%29%3D%5Cexp%28z%29), as long as we normalize it later. Setting ![\log\tilde{P}(y)=yz](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%29%3Dyz) just means that we hold ![\log\tilde{P}(y=0)=0](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D0%29%3D0) constant while allowing the algorithm to optimize the ![z](http://latex.codecogs.com/gif.latex?z) term in ![\log\tilde{P}(y=1)=z](http://latex.codecogs.com/gif.latex?%5Clog%5Ctilde%7BP%7D%28y%3D1%29%3Dz).
 
 There is also a slight jump from Equation 6.22 to 6.23. Elaborated below:
 
@@ -61,3 +61,51 @@ without changing the possible values of ![P(y)](http://latex.codecogs.com/gif.la
 Finally, we can directly represent that as a sigmoidal transformation:
 
 ![P(y)=\sigma((2y-1)z)](http://latex.codecogs.com/gif.latex?P%28y%29%3D%5Csigma%28%282y-1%29z%29)
+
+`page 178` On Equation 6.26, recall softplus from Equation 3.31 on page 66.
+
+![\zeta(x)=\log(1+\exp(x))](http://latex.codecogs.com/gif.latex?%5Czeta%28x%29%3D%5Clog%281&plus;%5Cexp%28x%29%29)
+
+![Softplus (green) and ReLU (blue) functions](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Rectifier_and_softplus_functions.svg/1200px-Rectifier_and_softplus_functions.svg.png)
+
+*Softplus (green) and ReLU (blue) functions.*
+
+Notice that the softplus (blue) function only saturates when the input is very negative. The proceeding paragraph in the text gives a good explanation of why this property of the softplus is great for gradient-based learning.
+
+Also a side note, the sign of the input reverses when taking the negative log likelihood:
+
+![-\log\sigma(x)=\zeta(-x)](http://latex.codecogs.com/gif.latex?-%5Clog%5Csigma%28x%29%3D%5Czeta%28-x%29)
+
+Regarding numerical computation concerns, as the text suggests, the negative log likelihood can be written as a function of ![z](http://latex.codecogs.com/gif.latex?z) rather than of ![\sigma(z)](http://latex.codecogs.com/gif.latex?%5Csigma%28z%29), which yields the softplus function:
+
+![J(\theta)=\log(1+\exp((1-2y)z))](http://latex.codecogs.com/gif.latex?J%28%5Ctheta%29%3D%5Clog%281&plus;%5Cexp%28%281-2y%29z%29%29)
+
+However, this still yields an overflow problem when calculating the exponential term if ![(1-2y)z](http://latex.codecogs.com/gif.latex?%281-2y%29z) is too large. 
+
+A possible solution is to realize that when ![(1-2y)z](http://latex.codecogs.com/gif.latex?%281-2y%29z) is large, 
+
+![\log(1+\exp((1-2y)z))\approx(1-2y)z](http://latex.codecogs.com/gif.latex?%5Clog%281&plus;%5Cexp%28%281-2y%29z%29%29%5Capprox%281-2y%29z)
+
+So we can simply add an `if` statement to filter out values of ![(1-2y)z](http://latex.codecogs.com/gif.latex?%281-2y%29z) beyond a certain threshold. In fact, as noted [here](https://stackoverflow.com/questions/44230635/avoid-overflow-with-softplus-function-in-python), setting the threshold at 30 already gives the approximate solution within an error of < 1e-10 in magnitude.
+
+`page 181` Interesting note on how the typical approach for the softmax function actually overparameterizes the distribution. Although somewhat disappointingly, the restricted version apparently gives similar performance.
+
+`page 182` **Heteroscedastic.** Refers to data distributions with subsets that have different variances/variabilities from each other.
+
+`page 183` Nice notes on why using precision works better than variance in implementation, although the two concepts are interchangeable. 
+
+`page 186`
+
+> A function is differentiable at z only if both the left derivative and right derivative are defined and equal to each other.
+
+A nice succinct definition, that precludes the ReLU due to the non-differentiable point at 0.
+
+`page 187`
+
+> When initializing the parameters of the affine transformation, it can be a good practice to set all elements of b to a small positive value, such as 0.1. Doing so makes it very likely that the rectified linear units will be initially active for most inputs in the training set and allow the derivatives to pass through.
+
+`page 188` **Maxout units.** This seems to be less mainstream in current research works. Here's the [original paper](https://arxiv.org/abs/1302.4389) by Goodfellow et al. (2013) and the [paper](https://arxiv.org/abs/1312.6211) discussing catastrophic forgetting by Goodfellow et al. (2014).
+
+
+
+
