@@ -106,6 +106,35 @@ A nice succinct definition, that precludes the ReLU due to the non-differentiabl
 
 `page 188` **Maxout units.** This seems to be less mainstream in current research works. Here's the [original paper](https://arxiv.org/abs/1302.4389) by Goodfellow et al. (2013) and the [paper](https://arxiv.org/abs/1312.6211) discussing catastrophic forgetting by Goodfellow et al. (2014).
 
+`page 193`
 
+> This is easiest to see in the binary case: the number of possible binary functions on vectors ![\mathbf{v}\in\{0,1\}^n](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bv%7D%5Cin%5C%7B0%2C1%5C%7D%5En) is ![2^{2^n}](http://latex.codecogs.com/gif.latex?2%5E%7B2%5En%7D) and selecting one such function requires ![2^n](http://latex.codecogs.com/gif.latex?2%5En) bits, which will in general require ![O(2^n)](http://latex.codecogs.com/gif.latex?O%282%5En%29) degrees of freedom.
 
+Let's consider ![\mathbf{v}\in\{0,1\}^2](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bv%7D%5Cin%5C%7B0%2C1%5C%7D%5E2). This means that ![\mathbf{v}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bv%7D) contains vectors that are 2-dimensional and each dimension's value can only take on either 0 or 1. We can enumerate the entire set of ![\mathbf{v}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bv%7D) as:
+
+![\begin{bmatrix}0\\0\end{bmatrix},\begin{bmatrix}0\\1\end{bmatrix},\begin{bmatrix}1\\0\end{bmatrix},\begin{bmatrix}1\\1\end{bmatrix}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D0%5C%5C0%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D1%5C%5C0%5Cend%7Bbmatrix%7D%2C%5Cbegin%7Bbmatrix%7D1%5C%5C1%5Cend%7Bbmatrix%7D)
+
+Next we consider the number of possible binary functions on this set of vectors. Simply consider a function as a mapping between every possible input vector and its output. In our case, since we are considering only binary functions, the only possible outputs are 0 or 1.
+
+Here's one possible function/mapping:
+
+![f\left(\begin{bmatrix}0\\0\end{bmatrix}\right)=0](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D0%5C%5C0%5Cend%7Bbmatrix%7D%5Cright%29%3D0)
+![f\left(\begin{bmatrix}0\\1\end{bmatrix}\right)=0](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D%5Cright%29%3D0)
+![f\left(\begin{bmatrix}1\\0\end{bmatrix}\right)=0](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D1%5C%5C0%5Cend%7Bbmatrix%7D%5Cright%29%3D0)
+![f\left(\begin{bmatrix}1\\1\end{bmatrix}\right)=0](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D1%5C%5C1%5Cend%7Bbmatrix%7D%5Cright%29%3D0)
+
+Here the function maps all the inputs to 0.
+
+Here's another possible function/mapping:
+
+![f\left(\begin{bmatrix}0\\0\end{bmatrix}\right)=0](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D0%5C%5C0%5Cend%7Bbmatrix%7D%5Cright%29%3D0)
+![f\left(\begin{bmatrix}0\\1\end{bmatrix}\right)=1](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D0%5C%5C1%5Cend%7Bbmatrix%7D%5Cright%29%3D1)
+![f\left(\begin{bmatrix}1\\0\end{bmatrix}\right)=1](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D1%5C%5C0%5Cend%7Bbmatrix%7D%5Cright%29%3D1)
+![f\left(\begin{bmatrix}1\\1\end{bmatrix}\right)=1](http://latex.codecogs.com/gif.latex?f%5Cleft%28%5Cbegin%7Bbmatrix%7D1%5C%5C1%5Cend%7Bbmatrix%7D%5Cright%29%3D1)
+
+In this case, this function acts like an OR gate.
+
+In general, we can see that there are ![2^k](http://latex.codecogs.com/gif.latex?2%5Ek) possible unique functions/mappings where ![k](http://latex.codecogs.com/gif.latex?k) refers to the number of possible inputs. Since we only consider binary values, ![k=2^n](http://latex.codecogs.com/gif.latex?k%3D2%5En). Which means the total number of possible functions is ![2^{2^n}](http://latex.codecogs.com/gif.latex?2%5E%7B2%5En%7D).
+
+`page 194` For Figure 6.5, recall that the absolute value rectification unit is simply ![g(z)=\left|z\right|](http://latex.codecogs.com/gif.latex?g%28z%29%3D%5Cleft%7Cz%5Cright%7C) (see page 187). See original paper [here](https://arxiv.org/abs/1402.1869).
 
