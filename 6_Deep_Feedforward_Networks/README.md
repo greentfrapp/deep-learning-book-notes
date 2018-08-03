@@ -138,3 +138,11 @@ In general, we can see that there are ![2^k](http://latex.codecogs.com/gif.latex
 
 `page 194` For Figure 6.5, recall that the absolute value rectification unit is simply ![g(z)=\left|z\right|](http://latex.codecogs.com/gif.latex?g%28z%29%3D%5Cleft%7Cz%5Cright%7C) (see page 187). See original paper [here](https://arxiv.org/abs/1402.1869).
 
+`page198`
+
+> The back-propagation algorithm can be applied to these tasks as well and is not restricted to computing the gradient of the cost function with respect to the parameters.
+
+Some common uses include computing the gradient with respect to the input, in order to craft [adversarial examples](https://arxiv.org/abs/1412.6572), as well as to maximize activation of certain nodes/neurons for [feature visualization](https://distill.pub/2017/feature-visualization/).
+
+`page 200` Similar computational graphs can also be visualized with tools such as [Tensorboard](https://www.tensorflow.org/guide/graph_viz), which can be helpful for analysis and debugging.
+
