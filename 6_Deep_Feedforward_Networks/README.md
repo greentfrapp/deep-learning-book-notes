@@ -146,3 +146,70 @@ Some common uses include computing the gradient with respect to the input, in or
 
 `page 200` Similar computational graphs can also be visualized with tools such as [Tensorboard](https://www.tensorflow.org/guide/graph_viz), which can be helpful for analysis and debugging.
 
+`page 202` ![Pa(u^{(i)})](http://latex.codecogs.com/gif.latex?Pa%28u%5E%7B%28i%29%7D%29) refers to indices of parents of ![u^{(i)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28i%29%7D).
+
+`page 202` For Equation 6.49, ![\sum_{i:j\in Pa(u^{(i)})}](http://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3Aj%5Cin%20Pa%28u%5E%7B%28i%29%7D%29%7D) refers to a summation across all ![u^{(i)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28i%29%7D), whose parents include node ![u^{(j)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28j%29%7D). In other words, summation across all children of ![u^{(j)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28j%29%7D).
+
+For example, suppose we have an input node ![u^{(1)}](http://latex.codecogs.com/gif.latex?u%5E%7B%281%29%7D). This node is a parent of both nodes ![u^{(2)}](http://latex.codecogs.com/gif.latex?u%5E%7B%282%29%7D) and ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D). And suppose nodes ![u^{(2)}](http://latex.codecogs.com/gif.latex?u%5E%7B%282%29%7D) and ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D) are parents of ![u^{(4)}](http://latex.codecogs.com/gif.latex?u%5E%7B%284%29%7D).
+
+Then Equation 6.49 tells us that:
+
+![\frac{\partial u^{(4)}}{\partial u^{(1)}}=\frac{\partial u^{(4)}}{\partial u^{(3)}}\frac{\partial u^{(3)}}{\partial u^{(1)}}+\frac{\partial u^{(4)}}{\partial u^{(2)}}\frac{\partial u^{(2)}}{\partial u^{(1)}}](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial%20u%5E%7B%284%29%7D%7D%7B%5Cpartial%20u%5E%7B%281%29%7D%7D%3D%5Cfrac%7B%5Cpartial%20u%5E%7B%284%29%7D%7D%7B%5Cpartial%20u%5E%7B%283%29%7D%7D%5Cfrac%7B%5Cpartial%20u%5E%7B%283%29%7D%7D%7B%5Cpartial%20u%5E%7B%281%29%7D%7D&plus;%5Cfrac%7B%5Cpartial%20u%5E%7B%284%29%7D%7D%7B%5Cpartial%20u%5E%7B%282%29%7D%7D%5Cfrac%7B%5Cpartial%20u%5E%7B%282%29%7D%7D%7B%5Cpartial%20u%5E%7B%281%29%7D%7D)
+
+`page 202` For context, we can consider Algorithm 6.1 as computing the scalar output of a neural network.
+
+In this neural network, there are a total of ![n](http://latex.codecogs.com/gif.latex?n) nodes, including input, hidden and output nodes. The input is a vector of ![n_i](http://latex.codecogs.com/gif.latex?n_i) dimensions, while the output is a scalar (1-dimensional).
+
+As mentioned in the text:
+
+> We will assume that the nodes of the graph have been ordered in such a way that we can compute their output one after the other, starting at ![u^{(n_i+1)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28n_i&plus;1%29%7D) and going up to ![u^{(n)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28n%29%7D).
+
+As an example, suppose ![n_i=2](http://latex.codecogs.com/gif.latex?n_i%3D2) (the input vector is 2-dimensional) and the first hidden layer is 3-dimensional. This means that ![u^{(1)},u^{(2)}](http://latex.codecogs.com/gif.latex?u%5E%7B%281%29%7D%2Cu%5E%7B%282%29%7D) are the nodes for the input layer. And ![u^{(3)},u^{(4)},u^{(5)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D%2Cu%5E%7B%284%29%7D%2Cu%5E%7B%285%29%7D) are the nodes for the first hidden layer. The ordering of the indices is such that each node can be computed using the values of the previous nodes eg. node ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D) can be computed using ![u^{(1)},u^{(2)}](http://latex.codecogs.com/gif.latex?u%5E%7B%281%29%7D%2Cu%5E%7B%282%29%7D).
+
+The first `for` loop in Algorithm 6.1 simply assigns the input vector to the nodes of the input layer.
+
+The second `for` loop computes the values of subsequent nodes in order of the indices. Continuing with the above example, suppose we want to compute the value for node ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D). We first assign the parents of ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D) to the set ![\mathbb{A}](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BA%7D). For a regular feedforward network, the parents of each node are all the nodes in the immediate preceding layer eg. for node ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D), its parents are ![u^{(1)},u^{(2)}](http://latex.codecogs.com/gif.latex?u%5E%7B%281%29%7D%2Cu%5E%7B%282%29%7D). So ![\mathbb{A}=\{u^{(1)},u^{(2)}\}](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BA%7D%3D%5C%7Bu%5E%7B%281%29%7D%2Cu%5E%7B%282%29%7D%5C%7D). Then we apply the corresponding function for node ![u^{(3)}](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D) ie.
+
+![u^{(3)}=f^{(3)}(\mathbb{A})=f^{(3)}(\{u^{(1)},u^{(2)}\})](http://latex.codecogs.com/gif.latex?u%5E%7B%283%29%7D%3Df%5E%7B%283%29%7D%28%5Cmathbb%7BA%7D%29%3Df%5E%7B%283%29%7D%28%5C%7Bu%5E%7B%281%29%7D%2Cu%5E%7B%282%29%7D%5C%7D%29)
+
+We do this repeatedly until we arrive at the value for the output node ![u^{(n)}](http://latex.codecogs.com/gif.latex?u%5E%7B%28n%29%7D).
+
+`page 204` Algorithm 6.2 (backpropagation) is actually similar to Algorithm 6.1, but executed in reverse order, where the derivatives for nodes are computed based on the derivatives of their children, in accordance with the chain rule. In this case, we focus on calculating the derivatives with respect to the node values. However, in actually implementation, we typically use backpropagation to also calculate the derivatives with respect to the weight matrices and biases, in order to perform updates via gradient descent. Refer to Algorithms 6.3 and 6.4 for forward and backward propagation through a neural network.
+
+`page 207` **Symbol-to-number and Symbol-to-symbol Differentiation.** It might be difficult to appreciate the difference between the two approaches, especially given the following sentence in the next page:
+
+> The description of the symbol-to-symbol based approach subsumes the symbol-to-number approach.
+
+The difference is stated a few sentences later as:
+
+> The key difference is that the symbol-to-number approach does not expose the graph.
+
+Here's a nice symbol-to-symbol [example](https://stackoverflow.com/questions/44342432/is-gradient-in-the-tensorflows-graph-calculated-incorrectly) (see first answer) of the additional nodes constructed in Tensorflow for the derivatives. Specifically, we see that when we construct a cosine function and a gradient operator for calculating the gradient of the cosine function, the graph shows both `cos` and `sin` nodes, since the derivative of a cosine function is negative sine. The `sin` node is the additional node added for calculating the derivative.
+
+On the other hand, the symbol-to-number approach does not explicitly construct the nodes for the derivatives. Instead the derivatives are calculating during runtime locally for each node/edge in the graph. See [here](https://github.com/attractivechaos/kann/blob/master/doc/02dev.md#automatic-differentiation-and-computational-graph) for an example.
+
+Crucially, because the nodes for the derivative operations are not constructed in the symbol-to-number approach, it can be difficult to obtain derivatives of derivatives (ie. higher derivatives), which may be useful in cases such as meta-learning ([Finn et al., 2017](https://arxiv.org/abs/1703.03400)).
+
+`page 209` Notice that gradient with respect to ![\mathbf{A}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BA%7D) is given by ![\mathbf{GB}^\top](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BGB%7D%5E%5Ctop), while gradient with respect to ![\mathbf{B}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BB%7D) is given by ![\mathbf{A^\top G}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BA%5E%5Ctop%20G%7D). This is due to the noncommutative properties of matrix multiplication and is easy to see why if we consider ![\mathbf{A}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BA%7D) and ![\mathbf{B}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BB%7D) to have different shapes.
+
+`page 209`
+
+> The `op.bprop` method should always pretend that all its inputs are distinct from each other, even if they are not.
+
+Interesting note with a great example!
+
+`page 210` Some clarifying notes on the `for` loop in Algorithm 6.6, which describes the `build_grad` function.
+
+The `for` loop computes partial derivatives contributed by the children of **V** and we sum all of these to get the gradient for **V** (see Equation 6.49). The `for` loop does this by enumerating across all the children of **V** and doing the follow:
+
+1. Get the operation (`sum`, `mul` etc.) leading to that child
+2. Perform `build_grad` on the child to get the gradient of the output (typically loss) with respect to the child (this results in a recursive function)
+3. Calculate partial derivative contributed by the child using `op.bprop`
+
+`page 209` ToDo: Implement annotated backpropagation in NumPy for common operations.
+
+`page 211` On a side note, **dynamic programming** is a popular paradigm that often uses recursive functions and memory to simplify algorithms and reduce runtime.
+
+`page 215` Refer to [this](https://deepnotes.io/softmax-crossentropy#derivative-of-cross-entropy-loss-with-softmax) (take note that there are several small typos) for an explanation of why ![\frac{\partial J}{\partial z_i}=q_i-p_i](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20z_i%7D%3Dq_i-p_i).
+
+`page 219` More precisely, Jarrett et al. ([2009](http://yann.lecun.com/exdb/publis/pdf/jarrett-iccv-09.pdf)) observed that fixed random weights for feature extraction layers paired with a linear classifier layer that is trained in supervised mode is sufficient to achieve decent performance, as long as they include absolute value rectification and contrast normalization (refer to Sections 3 and 4 and Table 1 in the paper).
