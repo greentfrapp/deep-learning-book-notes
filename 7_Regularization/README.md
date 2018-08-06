@@ -56,4 +56,12 @@ Case 2 can also be interpreted in a similar manner. Likewise for ![w_i^*<0](http
 
 `page 229` Good exercise to try to derive Equation 7.24 from 3.26. Note that the ![\gamma](http://latex.codecogs.com/gif.latex?%5Cgamma) term in Equation 3.26 is set to ![\frac{1}{\alpha}](http://latex.codecogs.com/gif.latex?%5Cfrac%7B1%7D%7B%5Calpha%7D) in Equation 7.24. This also means that a smaller ![\alpha](http://latex.codecogs.com/gif.latex?%5Calpha) implies a wider and less peaky/sharp distribution.
 
+`page 232` Nice easily-understood example of why regularization is helpful in the underdetermined case - logistic regression applied to linearly separable classes.
+
+`page 233` Interesting interpretation relating pseudo-inverse to regularization.
+
+`page 234` **Out-of-plane Rotation** Suppose you have a camera focused on a regular cup on a table, which gives you an image of the cup. If you rotate either the camera or the environment, such that the axis of rotation is perpendicular to the image surface, that is an in-plane rotation. Rotating along any other axis results in an out-of-plane rotation. 
+
+For instance, we can visualize what it is like to turn the camera upside down (in-plane rotation) by simply flipping the image. However, in order to see the hidden/back sided of the cup, we will have to physically adjust the cup (out-of-plane rotation), since we cannot perform any transformation to the original image that will give us the desired effect.
+
 
