@@ -64,4 +64,12 @@ Case 2 can also be interpreted in a similar manner. Likewise for ![w_i^*<0](http
 
 For instance, we can visualize what it is like to turn the camera upside down (in-plane rotation) by simply flipping the image. However, in order to see the hidden/back sided of the cup, we will have to physically adjust the cup (out-of-plane rotation), since we cannot perform any transformation to the original image that will give us the desired effect.
 
+`page 236` **Label Smoothing.** I wonder if there is a good rule-of-thumb value for ![\epsilon](http://latex.codecogs.com/gif.latex?%5Cepsilon), other than ![\epsilon>1/k](http://latex.codecogs.com/gif.latex?%5Cepsilon%3E1/k).
 
+`page 238` **Multitask Learning.** 
+
+Reinforcement learning often uses a similar idea, where the value network and the policy network shares the same parameters/low-level layers.
+
+A related field is domain adaptation, which involves learning a classifier for a task without labels, using another task from a different but related domain that has labels.
+
+This is also related to the concept of transfer learning, which is in turn related to distillation ([Hinton et al., 2015](https://arxiv.org/abs/1503.02531)).
