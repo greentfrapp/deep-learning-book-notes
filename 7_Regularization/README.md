@@ -73,3 +73,82 @@ Reinforcement learning often uses a similar idea, where the value network and th
 A related field is domain adaptation, which involves learning a classifier for a task without labels, using another task from a different but related domain that has labels.
 
 This is also related to the concept of transfer learning, which is in turn related to distillation ([Hinton et al., 2015](https://arxiv.org/abs/1503.02531)).
+
+`page 242` **Early Stopping.** As mentioned in the text, early stopping is an extremely simple form of regularization and modern libraries often have built-in functions or classes that facilitate early stopping (examples include [Keras](https://keras.io/callbacks/#earlystopping), [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/monitors#configuring_a_validationmonitor_for_streaming_evaluation)) and [PyTorch](https://pytorch.org/ignite/handlers.html#ignite.handlers.EarlyStopping). **Note:** it is extremely important that a separate validation set be set aside for early stopping and not to use the test set. - same as for other forms of hyperparameter tuning.
+
+`page 245` Again, with reference to chapter 2, ![\lambda_i](http://latex.codecogs.com/gif.latex?%5Clambda_i) refers to the eigenvalue of the corresponding eigenvector in ![\mathbf{Q}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D).
+
+One way to understand Equation 7.40 is to first see that if we did not set ![\mathbf{w}^{(0)}=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7B0%7D), then the equation should be:
+
+![\mathbf{Q}^\top\mathbf{w}^{(\tau)}=\mathbf{Q}^\top\mathbf{w}^{(0)}+[\mathbf{I}-(\mathbf{I}-\epsilon\mathbf{\Lambda})^\tau](\mathbf{Q}^\top\mathbf{w}^*-\mathbf{Q}^\top\mathbf{w}^{(0)})](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau%29%7D%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D&plus;%5B%5Cmathbf%7BI%7D-%28%5Cmathbf%7BI%7D-%5Cepsilon%5Cmathbf%7B%5CLambda%7D%29%5E%5Ctau%5D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*-%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%29)
+
+The first term in the left-hand side is the starting point ![\mathbf{Q}^\top\mathbf{w}^{(0)}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D). The second point represents the amount that we move towards the unregularized goal ![\mathbf{Q}^\top\mathbf{w}^*](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*).
+
+Then by setting ![\mathbf{w}^{(0)}=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7B0%7D), we arrive back at Equation 7.40.
+
+Now consider if we have 0 updates (![\tau=0](http://latex.codecogs.com/gif.latex?%5Ctau%3D0)). Then we have:
+
+![\mathbf{Q}^\top\mathbf{w}^{(0)}=[\mathbf{I}-(\mathbf{I}-\epsilon\mathbf{\Lambda})^0]\mathbf{Q}^\top\mathbf{w}^*=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5B%5Cmathbf%7BI%7D-%28%5Cmathbf%7BI%7D-%5Cepsilon%5Cmathbf%7B%5CLambda%7D%29%5E0%5D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%3D%5Cmathbf%7B0%7D)
+
+which makes sense since the text mentions that we set ![\mathbf{w}^{(0)}=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7B0%7D).
+
+Using the more general form of the equation (see above), we will get the rather tautological equation ![\mathbf{Q}^\top\mathbf{w}^{(0)}=\mathbf{Q}^\top\mathbf{w}^{(0)}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D).
+
+Next after 1 update, we will move towards ![\mathbf{Q}^\top\mathbf{w}^*](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*). The amount that we move by is dictated by the eigenvalues of the Hessian ![\mathbf{H}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BH%7D) (gradient of ![\hat{J}](http://latex.codecogs.com/gif.latex?%5Chat%7BJ%7D)) and learning rate ![\epsilon](http://latex.codecogs.com/gif.latex?%5Cepsilon). In other words:
+
+![\mathbf{Q}^\top\mathbf{w}^{(1)}=\mathbf{Q}^\top\mathbf{w}^{(0)}+[\mathbf{I}-(\mathbf{I}-\epsilon\mathbf{\Lambda})^1](\mathbf{Q}^\top\mathbf{w}^*-\mathbf{Q}^\top\mathbf{w}^{(0)})=\mathbf{Q}^\top\mathbf{w}^{(0)}+\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*-\mathbf{Q}^\top\mathbf{w}^{(0)})](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%281%29%7D%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D&plus;%5B%5Cmathbf%7BI%7D-%28%5Cmathbf%7BI%7D-%5Cepsilon%5Cmathbf%7B%5CLambda%7D%29%5E1%5D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*-%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%29%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D&plus;%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*-%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%29)
+
+And again since ![\mathbf{w}^{(0)}=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7B0%7D), then we have ![\mathbf{Q}^\top\mathbf{w}^{(1)}=\epsilon\mathbf{\Lambda}\mathbf{Q}^\top\mathbf{w}^*](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%281%29%7D%3D%5Cepsilon%5Cmathbf%7B%5CLambda%7D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*).
+
+
+In the second update, we will again move towards ![\mathbf{Q}^\top\mathbf{w}^*](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*), but we take this second step from ![\mathbf{Q}^\top\mathbf{w}^{(1)}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%281%29%7D). This means:
+
+![\mathbf{Q}^\top\mathbf{w}^{(2)}=\mathbf{Q}^\top\mathbf{w}^{(1)}+\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*-\mathbf{Q}^\top\mathbf{w}^{(1)})](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%282%29%7D%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%281%29%7D&plus;%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*-%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%281%29%7D%29)
+
+It is easy to see that we can interpret this as a recursive function:
+
+![\mathbf{Q}^\top\mathbf{w}^{(\tau)}=\mathbf{Q}^\top\mathbf{w}^{(\tau-1)}+\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*-\mathbf{Q}^\top\mathbf{w}^{(\tau-1)})](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau%29%7D%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau-1%29%7D&plus;%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*-%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau-1%29%7D%29)
+
+Furthermore, by setting ![\mathbf{w}^{(0)}=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7B0%7D), we get
+
+![\mathbf{Q}^\top\mathbf{w}^{(2)}=\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*)+\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*-\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*))](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%282%29%7D%3D%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%29&plus;%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*-%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%29%29)
+
+since ![\mathbf{Q}^\top\mathbf{w}^{(1)}=\epsilon\mathbf{\Lambda}(\mathbf{Q}^\top\mathbf{w}^*)](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%281%29%7D%3D%5Cepsilon%5Cmathbf%7B%5CLambda%7D%28%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%29).
+
+We can rearrange the terms to arrive at Equation 7.40.
+
+![\mathbf{Q}^\top\mathbf{w}^{(2)}=\mathbf{Q}^\top\mathbf{w}^*(2\epsilon\mathbf{\Lambda}-\epsilon\mathbf{\Lambda}^2)=\mathbf{Q}^\top\mathbf{w}^*(\mathbf{I}-(\mathbf{I}-2\epsilon\mathbf{\Lambda}+\epsilon\mathbf{\Lambda}^2))=\mathbf{Q}^\top\mathbf{w}^*[\mathbf{I}-(\mathbf{I}-\epsilon\mathbf{\Lambda})^2]](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E%7B%282%29%7D%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%282%5Cepsilon%5Cmathbf%7B%5CLambda%7D-%5Cepsilon%5Cmathbf%7B%5CLambda%7D%5E2%29%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%28%5Cmathbf%7BI%7D-%28%5Cmathbf%7BI%7D-2%5Cepsilon%5Cmathbf%7B%5CLambda%7D&plus;%5Cepsilon%5Cmathbf%7B%5CLambda%7D%5E2%29%29%3D%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7Bw%7D%5E*%5B%5Cmathbf%7BI%7D-%28%5Cmathbf%7BI%7D-%5Cepsilon%5Cmathbf%7B%5CLambda%7D%29%5E2%5D)
+
+`page 246` The approach proposed by Lasserre et al. ([2006](https://ieeexplore.ieee.org/document/1640745/)) is very much related to (and likely inspired) algorithms used in domain adaptation, including works by Long et al. ([2015](https://arxiv.org/abs/1502.02791)) and Ganin & Lempitsky ([2015](https://arxiv.org/abs/1409.7495)).
+
+`page 247` While it is obvious once you think about it, it is still interesting to see convolutional networks as an example of parameter sharing. In the same way, RNNs can also be seen as sharing parameters across multiple steps of an input sequence.
+
+`page 249` **Ensembled Methods.** As evidence of their effectiveness, ensemble methods are often used in Kaggle competitions and real-world implementations. Although important considerations are the memory requirements and inference/prediction speed, since we have to store and use several models. Ensemble methods are analogous to how multiple measurements are made with a ruler (physics lab in schools, anyone?) and we take the average of all the measurements in order to reduce uncertainty.
+
+`page 250`
+
+> on average around two-thirds of the examples from the original dataset are found in the resulting training set, if it has the same size as the original
+
+This is an interesting observation that is explained [here](https://stats.stackexchange.com/questions/88980/why-on-average-does-each-bootstrap-sample-contain-roughly-two-thirds-of-observat) (see the second answer, then the first answer) and also relates to the .632 rule mentioned by Efron ([1983](https://www.jstor.org/stable/2288636)) and elaborated by Efron & Tibshirani ([1997](https://www.jstor.org/stable/2965703)).
+
+`page 260` Interesting emphasis on the importance of the multiplicative property of dropout.
+
+`page 261` An interesting note on how batch normalization can also have a regularizing effect, due to the additive and multiplicative noise in the normalization.
+
+`page 262`
+
+> Unfortunately, the value of a linear function can change very rapidly if it has numerous inputs.
+
+This forms the basis of the Fast Gradient Sign Method (Goodfellow et al., [2014](https://arxiv.org/abs/1412.6572)), as well as other methods for generating adversarial samples with small perturbations.
+
+`page 265` 
+
+> Second, the infinitesimal approach poses difficulties for models based on rectified linear units. These models can only shrink their derivatives by turning units off or shrinking their weights. They are not able to shrink their derivatives by saturating at a high value with large weights, as sigmoid or tanh units can.
+
+An interesting and important distinction between ReLU and sigmoid or tanh units.
+
+
+
+
+
+
