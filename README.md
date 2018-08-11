@@ -15,3 +15,4 @@ Unlike the [Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd
 - [5 Machine Learning Basics](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/5_Machine_Learning_Basics)
 - [6 Deep Feedforward Networks](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/6_Deep_Feedforward_Networks)
 - [7 Regularization for Deep Learning](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/7_Regularization)
+- [8 Optimization for Training Deep Models](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/8_Optimization)
