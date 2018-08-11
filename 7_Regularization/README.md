@@ -76,6 +76,8 @@ This is also related to the concept of transfer learning, which is in turn relat
 
 `page 242` **Early Stopping.** As mentioned in the text, early stopping is an extremely simple form of regularization and modern libraries often have built-in functions or classes that facilitate early stopping (examples include [Keras](https://keras.io/callbacks/#earlystopping), [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/monitors#configuring_a_validationmonitor_for_streaming_evaluation)) and [PyTorch](https://pytorch.org/ignite/handlers.html#ignite.handlers.EarlyStopping). **Note:** it is extremely important that a separate validation set be set aside for early stopping and not to use the test set. - same as for other forms of hyperparameter tuning.
 
+`page 244` In case you are referring to the not-yet-corrected hard copy of the book, the left figure in Figure 7.4 is a mistake and the correct (and more intuitive) figure can be found [here](http://www.deeplearningbook.org/contents/regularization.html) (go to page 247).
+
 `page 245` Again, with reference to chapter 2, ![\lambda_i](http://latex.codecogs.com/gif.latex?%5Clambda_i) refers to the eigenvalue of the corresponding eigenvector in ![\mathbf{Q}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D).
 
 One way to understand Equation 7.40 is to first see that if we did not set ![\mathbf{w}^{(0)}=\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D%3D%5Cmathbf%7B0%7D), then the equation should be:
