@@ -6,6 +6,8 @@ A bit of context: Been dabbling in AI research but largely self-taught so far, w
 
 Unlike the [Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html) textbook (Sutton & Barto), the Deep Learning textbook does not contain any exercises. Instead, I will attempt to implement the algorithms in Python code when appropriate.
 
+The annotations are made with reference to the hard copy of the book, which does not correspond to the web version. I will update all the pages when I finish the annotations.
+
 ## Contents
 
 - [1 Introduction](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/1_Introduction)
