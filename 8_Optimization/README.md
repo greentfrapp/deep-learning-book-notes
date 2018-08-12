@@ -48,6 +48,34 @@ Approaching it from below, a small step taken towards the cliff (perhaps due to 
 
 `page 281` **Gradient Clipping.** The text mentions it as a solution against excessively large gradient steps due to cliffs. Another way to think about it is to see that gradient clipping prevents overflows or underflows causing exploding or vanishing gradients.
 
-`page 285`
+`page 286`
+
+> By comparison, the true gradient of the total cost function becomes small and then 0 when we approach and reach a minimum using batch gradient descent, so batch gradient descent can use a fixed learning rate.
+
+Note that this refers to **batch** gradient descent and not **minibatch** gradient descent. So we are calculating a single gradient step based on the entire training set.
+
+`page 287`
+
+The conditions on epsilon for convergence of SGD is similar to the conditions on epsilon for the epsilon-greedy policy in reinforcement learning, such that the policy is Greedy in the Limit with Infinite Exploration (GLIE) and leads to convergence to the optimal policy.
+
+`page 288` **Momentum.** A nice Distill [article](https://distill.pub/2017/momentum/) on momentum (Goh, 2017).
+
+The ![\alpha](http://latex.codecogs.com/gif.latex?%5Calpha) parameter is essentially how much of the previous gradient you want to keep, in order to compute the new gradient.
+
+`page 290` Equation 8.17 can be easily derived from ![\mathbf{v}^{(i)}=\alpha\mathbf{v}^{(i-1)}-\epsilon\mathbf{g}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bv%7D%5E%7B%28i%29%7D%3D%5Calpha%5Cmathbf%7Bv%7D%5E%7B%28i-1%29%7D-%5Cepsilon%5Cmathbf%7Bg%7D) by setting ![\mathbf{v}^{(i)}=\mathbf{v}^{(i-1)}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bv%7D%5E%7B%28i%29%7D%3D%5Cmathbf%7Bv%7D%5E%7B%28i-1%29%7D) ie. the definition of terminal velocity.
+
+`page 291` **Nesterov Momentum.** Notice in Equation 8.21 that we use ![\mathbf{\theta}+\alpha\mathbf{v}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7B%5Ctheta%7D&plus;%5Calpha%5Cmathbf%7Bv%7D) for calculating the loss and the loss gradient, instead of ![\mathbf{\theta}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7B%5Ctheta%7D) as in Equation 8.15.
+
+This essentially means at every step, we calculate the new gradient by saying, 'Okay, what if we first apply the previous gradient step again (multiplied by alpha)'. So, the new gradient takes into account the momentum from the previous gradient step, ie. the *correction factor* mentioned in the text.
+
+`page 293` Gram-Schmidt orthogonalization ensures that the weight matrix is orthonormal ie. the vectors are linearly independent (orthogonal) and normalized to unit norm.
+
+`page 294` Second paragraph has very interesting notes on how SGD "expresses a prior that the final parameters should be close to the initial parameters", which lends meaning to how we initialize the weight parameters.
+
+`page 295` In Equation 8.23, the normalizing over ![m+n](http://latex.codecogs.com/gif.latex?m&plus;n) can be attributed to how the magnitude of the dot-product output is affected by the dimension of the weight matrix. A similar concern is expressed by Vaswani et al. ([2017](https://arxiv.org/abs/1706.03762)) when discussing dot-product attention, where the authors also use a similar normalization method.
+
+A drawback is that the normalization results in very small values when the layers are large. This is mentioned in the following page.
+
+
 
 
