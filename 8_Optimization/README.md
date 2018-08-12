@@ -76,6 +76,20 @@ This essentially means at every step, we calculate the new gradient by saying, '
 
 A drawback is that the normalization results in very small values when the layers are large. This is mentioned in the following page.
 
+`page 299` **RMSProp.** On an interesting note, RMSProp was actually introduced in Geoffrey Hinton's Coursera videos and never formally published in a paper. The citation for this section also leads to the Coursera lectures.
 
+`page 310` Great note on the importance of backpropagating through the batch-norm operations.
 
+`page 312` Actually, despite the recommendations by Ioffe and Szegedy ([2015](https://arxiv.org/abs/1502.03167)), there appears to be significant debate over whether to perform batchnorm before or after the activation (see [here](https://www.reddit.com/r/MachineLearning/comments/67gonq/d_batch_normalization_before_or_after_relu/)).
 
+`page 312`
+
+> In convolutional networks, described in chapter 9, it is important to apply the same normalizing ![\mu] and ![\sigma] at every spatial location within a feature map, so that the statistics of the feature map remain the same regardless of spatial location.
+
+For convolutional networks, we apply the batchnorm to the channels axis (see note on axis argument in Tensorflow's batchnorm [documentation](https://www.tensorflow.org/api_docs/python/tf/layers/batch_normalization)).
+
+`page 315` The concept behind FitNets ([Romero et al., 2015](https://arxiv.org/abs/1412.6550)) and the other pretraining ideas here seem to be related to the concept of distillation ([Hinton et al., 2015](https://arxiv.org/abs/1503.02531)).
+
+`page 317` Skip connections (aka residual connections) also feature prominently in ResNets ([He et al., 2015](https://arxiv.org/abs/1512.03385))
+
+`page 320` Interesting note on how a stochastic curriculum might give better results than a deterministic curriculum. On a side note, curriculum learning is also related to Saliman & Chen's ([2018](https://blog.openai.com/learning-montezumas-revenge-from-a-single-demonstration/)) work on reinforcement learning from a single human demonstration, which achieved SOTA results on the notoriously difficult (for AI) game Montezuma's Revenge. The main idea involves having a single human demonstration, rewinding the replay by a few steps and then training the agent to complete the demonstration. For example, we might train the initial agent to start from the last n steps of the human replay, where n=1. We then iteratively increase n when the agent is able to achieve a result that matches or surpasses the human's performance, until the agent is able to play the entire game from the beginning.
