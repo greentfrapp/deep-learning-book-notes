@@ -4,7 +4,7 @@
 
 > Usually the latter formula is more straightforward to implement in a machine learning library, because there is less variation in the range of valid values of m and n.
 
-See that in Equation 9.5, m and n traverses the size of the kernel, whereas in Equation 9.4, m and n traverses the size of the input. Typically in convlutional neural networks, the kernel is limited to a smaller size eg. 3x3, as compared to the input, which can be upwards of 100x100.
+See that in Equation 9.5, m and n traverses the size of the kernel, whereas in Equation 9.4, m and n traverses the size of the input. Typically in convolutional neural networks, the kernel is limited to a smaller size eg. 3x3, as compared to the input, which can be upwards of 100x100.
 
 `page 323`
 
