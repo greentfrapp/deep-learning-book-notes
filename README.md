@@ -18,3 +18,4 @@ The annotations are made with reference to the hard copy of the book, which does
 - [6 Deep Feedforward Networks](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/6_Deep_Feedforward_Networks)
 - [7 Regularization for Deep Learning](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/7_Regularization)
 - [8 Optimization for Training Deep Models](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/8_Optimization)
+- [9 Convolutional Networks](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/9_Convolutional_Networks)
