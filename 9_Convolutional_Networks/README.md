@@ -14,7 +14,7 @@ Specifically, considering Equations 9.4 and 9.5, when the input to I increases, 
 
 `page 324` [Here](https://stackoverflow.com/questions/16798888/2-d-convolution-as-a-matrix-matrix-multiplication) is a nice explanation of how we can view convolution as a regular matrix multiplication (see first answer). Notice that the resulting sparse matrix containing k elements is circulant along rows ie. each row is the preceding row shifted by one to the right. A moment's thought will show that the amount that each row shifts by is dictated by the *stride* of the convolutional layer, in the context of convolutional networks.
 
-`page 325` Figure 9.1 shows 2-D convolution without kernel flipping. For illustration, if kernel-flipping is used, then the first output box (top left) should give [az+by+wf+xe](http://latex.codecogs.com/gif.latex?az&plus;by&plus;wf&plus;xe). See that moving right in the input corresponds to moving left in the kernel and likewise for up/down.
+`page 325` Figure 9.1 shows 2-D convolution without kernel flipping. For illustration, if kernel-flipping is used, then the first output box (top left) should give ![az+by+wf+xe](http://latex.codecogs.com/gif.latex?az&plus;by&plus;wf&plus;xe). See that moving right in the input corresponds to moving left in the kernel and likewise for up/down.
 
 `page 327`
 
