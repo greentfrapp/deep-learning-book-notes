@@ -50,7 +50,7 @@ By using k > 1 spacing/stride, the resulting output will have smaller dimensions
 
 > If a task relies on preserving precise spatial information, then using pooling on all features can increase the training error.
 
-A good example is the [CLEVR](https://cs.stanford.edu/people/jcjohns/clevr/) dataset, which is a visual-question-answering (VQA) dataset, where the model has to answer questions about an image. An example question could be: "What size is the cylinder that is left of the brown metal thing that is left of the big sphere?" We obviously need to preserve spatial information and hence excessive pooling would be detrimental in this case.
+A good example is the [CLEVR](https://cs.stanford.edu/people/jcjohns/clevr/) dataset by Johnson et al. ([2016](https://arxiv.org/abs/1612.06890)), which is a visual-question-answering (VQA) dataset, where the model has to answer questions about an image. An example question could be: "What size is the cylinder that is left of the brown metal thing that is left of the big sphere?" We obviously need to preserve spatial information and hence excessive pooling would be detrimental in this case.
 
 `page 336`
 
