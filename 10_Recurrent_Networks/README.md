@@ -61,3 +61,31 @@ This refers to kth-order Markov models. For example, a 1st-order Markov model me
 > one can add a special symbol corresponding to the end of the sequence
 
 Note that this *special symbol* should not be in the original vocabulary of the dataset ie. its only role is to represent the end of the sequence.
+
+`page 385`
+
+> The last state ![\mathbf{h}_{n_x}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bh%7D_%7Bn_x%7D) of the encoder RNN is typically used as a representation ![C](http://latex.codecogs.com/gif.latex?C) of the input sequence that is provided as input to the decoder RNN.
+
+One disadvantage of such an architecture is that the last state ![\mathbf{h}_{n_x}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bh%7D_%7Bn_x%7D) is typically a fixed size vector that is used to represent the entire input sequence of arbitrary length. An excessively long sequence will be difficult to represent with a limited fixed size last state. This problem is subsequently addressed using the attention mechanism, by Bahdanau et al. ([2015](https://arxiv.org/abs/1409.0473)), which is then extended to a fully attentional model by Vaswani et al. ([2017](https://arxiv.org/abs/1706.03762)). (Mentioned in the next page.)
+
+`page 388` To clarify, the skip connection in Figure 10.13c is represented by the path with the black square that does not point to a blank circle.
+
+The skip connection means that ![h^{(t)}](http://latex.codecogs.com/gif.latex?h%5E%7B%28t%29%7D) takes as input ![h^{(t-1)}](http://latex.codecogs.com/gif.latex?h%5E%7B%28t-1%29%7D) and the output of the MLP (which took as input ![h^{(t-1)}](http://latex.codecogs.com/gif.latex?h%5E%7B%28t-1%29%7D) as well).
+
+Skip (or residual or shortcut) connections are often used to mitigate the negative effects of deep layers on gradient calculations (vanishing or exploding, see Sections 10.7 and 10.9). The most popular use of such connections is probably in the ResNet architecture developed by He et al. ([2015](https://arxiv.org/abs/1512.03385)).
+
+`page 389` The recursive nature of *recursive networks* is shown by the shared parameters ![\mathbf{U}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BU%7D) and ![\mathbf{W}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BW%7D), where the same 'functions' are recursively applied to the outputs of the 'functions'.
+
+`page 391` For Equation 10.39, there is no exponent on ![\mathbf{Q}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D) because it is an orthogonal matrix ie. ![\mathbf{Q}^\top\mathbf{Q}=\mathbf{Q}\mathbf{Q}^\top=\mathbf{I}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7BQ%7D%5E%5Ctop%5Cmathbf%7BQ%7D%3D%5Cmathbf%7BQ%7D%5Cmathbf%7BQ%7D%5E%5Ctop%3D%5Cmathbf%7BI%7D).
+
+`page 392`
+
+> [...] set the recurrent weights such that the recurrent hidden units do a good job of capturing the history of past inputs, and *only learn the output weights*.
+
+To clarify, this means that the recurrent weights are held constant and not trained during the training process.
+
+`page 397` **Long Short-Term Memory.** Christopher Olah has a great [blogpost](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) explaining how LSTMs and other gated RNNs work.
+
+`page 403` The result of Equation 10.49 is that ![\mathbf{g}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bg%7D) will be scaled such that its norm is equal to ![v](http://latex.codecogs.com/gif.latex?v).
+
+`page 405` Olah & Carter ([2016](https://distill.pub/2016/augmented-rnns/)) gave an overview of interesting recurrent network architectures, including the neural Turing machine and attention-based networks.
