@@ -20,3 +20,4 @@ The annotations are made with reference to the hard copy of the book, which does
 - [8 Optimization for Training Deep Models](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/8_Optimization)
 - [9 Convolutional Networks](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/9_Convolutional_Networks)
 - [10 Sequence Modeling: Recurrent and Recursive Nets](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/10_Recurrent_Networks)
+- [11 Practical Methodology](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/11_Practical_Methodology)
