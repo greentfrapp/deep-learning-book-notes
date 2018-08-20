@@ -30,5 +30,40 @@ A threshold is then used to determine when a human should intervene. This thresh
 
 `page 413` Slightly unrelated, but research-wise, a common lowerbound baseline used when introducing new tasks and datasets is simply the random baseline, which is the score of a completely random model. However, there are some cases where a purely random baseline should not be the lowerbound. For example, in Agrawal et al.'s work [2015](https://arxiv.org/abs/1505.00468v6) introducing the Visual Question Answering dataset, they used a 'prior ("yes")' baseline, which basically answered 'yes' to all the questions and has higher-than-random accuracy due to the distribution of the questions (See Table 2 in original paper).
 
-`page 413` [Here](https://github.com/RedditSota/state-of-the-art-result-for-machine-learning-problems) is a GitHub repo that contains links to state-of-the-art algorithms across different domains and tasks.
+`page 413` As implied by the text, initial baselines can simply be vanilla traditional algorithms that have been proven to work generally well and can be implemented quickly to get an initial result.
 
+But for those looking for the latest state-of-the-art, [here](https://github.com/RedditSota/state-of-the-art-result-for-machine-learning-problems) is a GitHub repo that contains links to implemented state-of-the-art algorithms across different domains and tasks.
+
+`page 417`
+
+> If you have time to tune only one hyperparameter, tune the learning rate.
+
+Interesting piece of advice! Not sure if I agree or disagree, mainly because I found that my go-to optimizer Adam generally works well with a learning rate of 1e-3 or 1e-4, although to be honest I haven't spent a lot of time purposefully tuning the learning rate.
+
+`page 418`
+
+> Your goal is to reduce this gap without increasing training error faster than the gap decreases.
+
+This effectively means that your test error (training error + generalization error/gap) decreases.
+
+`page 419` A nice summary of a few hyperparameters. It is a good exercise to try to come up with a similar table for more hyperparameters such as batch size, number of training steps (early stopping), weights and bias initializer etc., as well as other algorithm-specific hyperparameters.
+
+`page 420`
+
+> [...] we are trying to find a value of the hyperparameters that optimizes an objective function, such as validation error [...]
+
+It is important to see and understand that we are optimizing the validation error here and not the training or test error.
+
+`page 422` It is counter-intuitive and definitely interesting that random search appears to work better than grid search for hyperparameter tuning. A short explanation is given in the text and detailed by Bergstra et al. ([2011](https://papers.nips.cc/paper/4443-algorithms-for-hyper-parameter-optimization.pdf)).
+
+`page 424` More recently, neural architecture search (NAS) has shown some promise in the domain of hyperparameter optimization. 
+
+Suppose we are designing an image classifier. The paradigm adopted by NAS is to let another machine learning algorithm learn the hyperparameters for the image classifier automatically, including the entire architecture of the classifier, such as how the convolutional layers connect to each other, where to place pooling layers etc. 
+
+NASNet by Zoph et al. ([2017](https://arxiv.org/abs/1707.07012)) is one of the more well-known works on NAS, applying the technique to design an architecture for ImageNet. To quote Zoph et al., NASNet "is 1.2% better in top-1 accuracy than the best human-invented architectures while having 9 billion fewer FLOPS - a reduction of 28% in computational demand from the previous state-of-the-art model".
+
+`page 424` **Important Section!** I urge anyone reading this to pay a ton of attention to this section on **Debugging Strategies**.
+
+From personal experience, many novice researchers and practitioners (including myself!) tend to put immediate blame on poor hyperparameters or bad data when an implementation does not perform as expected. This results in many hours, days or weeks wasted tuning hyperparameters or collecting/cleaning data when the problem might be a bug in the implementation.
+
+I definitely recommend doing some form of unit testing to make sure each part of the implementation works as intended. This section also recommends several other very good practices that I had to learn myself from a lot of wasted effort. So read this section closely and use the advice!
