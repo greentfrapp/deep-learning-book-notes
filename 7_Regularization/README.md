@@ -24,7 +24,7 @@ On that note, we can generalize the regularization term to regularize and push t
 
 where ![\mathbf{w}^{(0)}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%280%29%7D) is the arbitrary point and is assumed to be the origin (ie. ![\mathbf{0}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7B0%7D)) by default. 
 
-A similar approach can be taken for ![L^1](http://latex.codecogs.com/gif.latex?L%5E1) regularization, as seen in the footnore on page 227.
+A similar approach can be taken for ![L^1](http://latex.codecogs.com/gif.latex?L%5E1) regularization, as seen in the footnote on page 227.
 
 `page 225` Refer to Chapter 2 notes and Figure 2.3 for eigenvectors and scaling.
 
