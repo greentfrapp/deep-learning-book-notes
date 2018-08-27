@@ -38,4 +38,6 @@ On a similar note, Chaitanya et al. ([2017](https://research.nvidia.com/publicat
 
 Interestingly, a recent achievement by [fast.ai](https://www.fast.ai) on training 'Imagenet to 93% accuracy in just 18 minutes' made use of rectangular images for validation (rather than traditional square center crops), which gave 'an immediate speedup of 23% in the amount of time it took to reach the benchmark accuracy of 93%'. See the full blog post [here](http://www.fast.ai/2018/08/10/fastai-diu-imagenet/).
 
-`page 445` There is an interesting paper by Cubuk et al. ([2018](https://arxiv.org/abs/1805.09501)) that used reinforcement learning to find optimal image transformation policies, known as AutoAugment. [Here](https://ai.googleblog.com/2018/06/improving-deep-learning-performance.html) is the blog post.
+`page 445` Regarding data augmentation, there is an interesting paper by Cubuk et al. ([2018](https://arxiv.org/abs/1805.09501)) that used reinforcement learning to find optimal image transformation policies, known as AutoAugment. [Here](https://ai.googleblog.com/2018/06/improving-deep-learning-performance.html) is the blog post.
+
+`page 448` Another contemporary work on "aligning" acoustic-level information with phonetic-level information using attention is the work by Chan et al. ([2015](https://arxiv.org/abs/1508.01211)). This is also described briefly by Olah & Carter ([2016](https://distill.pub/2016/augmented-rnns/)) in their Distill article on augmented RNNs.
