@@ -41,3 +41,37 @@ Interestingly, a recent achievement by [fast.ai](https://www.fast.ai) on trainin
 `page 445` Regarding data augmentation, there is an interesting paper by Cubuk et al. ([2018](https://arxiv.org/abs/1805.09501)) that used reinforcement learning to find optimal image transformation policies, known as AutoAugment. [Here](https://ai.googleblog.com/2018/06/improving-deep-learning-performance.html) is the blog post.
 
 `page 448` Another contemporary work on "aligning" acoustic-level information with phonetic-level information using attention is the work by Chan et al. ([2015](https://arxiv.org/abs/1508.01211)). This is also described briefly by Olah & Carter ([2016](https://distill.pub/2016/augmented-rnns/)) in their Distill article on augmented RNNs.
+
+`page 449` **n-grams.** Previous NLP classification algorithms use bag-of-words (BoW) models where a sentence might be expressed as a vector indicating the appearance of each word.
+
+Suppose we have a vocabulary containing the words ['cats', 'dogs', 'are', 'fat']. Then the sentence 'dogs are fat' might be represented by the vector [0, 1, 1, 1], while the sentence 'cats are fat' might be represented by the vector [1, 0, 1, 1]. 
+
+There are also bag-of-n-gram (BoNG) models where the vocab includes n-grams. For example, if we include up to bigrams (n = 2), the same example from above might now have the following vocabulary ['cats', 'dogs', 'are', 'fat', 'cats dogs', 'dogs are', 'are fat', 'dogs cats', ...] of size 20. The sentence 'dogs are fat' might then be represented by [0, 1, 1, 1, 0, 1, 1, 0,...], since both bigrams 'dogs are' and 'are fat' appear in the sentence. 
+
+From this example, we can also see how n-gram models are susceptible to the curse of dimensionality and how most n-grams will not occur in the training set.
+
+`page 449` **Language Modeling.** I mentioned this in previous notes on Chapter 10 but [here's](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) a great post by Andrej Karpathy on training character-level language models. 
+
+More interestingly, recent research has shown that language models trained on huge amounts of data can actually be used for a wide variety of tasks after some finetuning, including commonsense reasoning! See works by Trinh & Le ([2018](https://arxiv.org/abs/1806.02847)) and Radford et al. ([2018](https://blog.openai.com/language-unsupervised/)).
+
+`page 452` **Word Embeddings.** Popular word-embedding models include Word2Vec ([Mikolov et al., 2013](https://arxiv.org/abs/1301.3781)) and GloVe ([Pennington et al., 2014](https://nlp.stanford.edu/pubs/glove.pdf)). There is a nice demo [here](http://bionlp-www.utu.fi/wv_demo/) and a more visual one [here](https://lamyiowce.github.io/word2viz/) (can take several minutes to load).
+
+On a side note, word embeddings have also been the focus of algorithmic bias studies such as this work by Bolukbasi et al. ([2016](https://arxiv.org/abs/1607.06520)) and the related MIT Tech Review [article](https://www.technologyreview.com/s/602025/how-vector-space-mathematics-reveals-the-hidden-sexism-in-language/). More precisely, the word embeddings can surface bias found in the training data itself, such as co-occurences that might indicate discriminatory sentiments.
+
+`page 460` **Machine Translation.** The current SOTA in machine translation uses the attention model (described in the next section), known as the Transformer ([Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)). An implementation can be found [here](https://github.com/tensorflow/tensor2tensor). Vaswani et al.'s work builds on the attention mechanism introduced by Bahdanau et al. ([2014](https://arxiv.org/abs/1409.0473)), which is mentioned in the text. Interestingly, compared to Bahdanau et al., the Transformer architecture by Vaswani et al. does not use any recurrent model, only fully connected networks and multihead dot-product attention.
+
+I have previously worked on a guide to attention and the Transformer model, which can be found [here](https://github.com/greentfrapp/attention-primer).
+
+`page 464` Note: SVD here refers to Singular-Value Decomposition. 
+
+`page 465` On a related note to recommender systems and language modeling, there was an interesting work by Radford et al., ([2017](https://blog.openai.com/unsupervised-sentiment-neuron/)), which found that a character-level language model trained on 82 million Amazon reviews contained a sentiment neuron - a neuron that predicted the sentiment of a review ie. positive or negative. The [blogpost](https://blog.openai.com/unsupervised-sentiment-neuron/) has great examples of some cool experiments done with the sentiment neuron.
+
+`page 468` **Exploration versus Exploitation.** As mentioned in the text, this paradigm comes up frequently in reinforcement learning. Here is a nice way to think about it. Suppose you are in a foreign city and you know that you like the food at Restaurant A (maybe you have been to this city once at tried the food there before). The question is - should you **explore** unknown restaurants or **exploit** your knowledge and go back to Restaurant A? In the former case, you risk eating at worse restaurants but you might also chance upon a restaurant that's much better than Restaurant A. In the latter case, settle for Restaurant A, never knowing whether there might be something better out there. This is also related to the [Secretary problem](https://en.wikipedia.org/wiki/Secretary_problem).
+
+`page 469`
+
+> One of the most prominent factors is the time scale we are interested in.
+
+This also applies intuitively to our restaurant example above. If we know we are going to stay in the foreign city for a year, we are probably better off exploring new restaurants, since the positive effect of the new knowledge can be exploited over a longer term. In contrast, if we are going to be in this foreign city for a 2-hour layover, it might be better to just stick to Restaurant A as a safe bet.
+
+`page 470` The relation discussion here is somewhat related to inductive logic programming (ILP) ([Muggleton & De Raedt, 1994](https://www.sciencedirect.com/science/article/pii/0743106694900353)), which focused on teaching machines to reason with predicates and clauses. More recently, a team from DeepMind introduced ∂ILP, which augmented ILP with deep learning ([Evans & Grefenstette, 2018](https://arxiv.org/abs/1711.04574)). This is actually a pretty good read as it touches on some of the disadvantages of neural networks, such as brittleness and the lack of interpretability.
