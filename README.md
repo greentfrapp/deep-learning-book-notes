@@ -22,3 +22,4 @@ The annotations are made with reference to the hard copy of the book, which does
 - [10 Sequence Modeling: Recurrent and Recursive Nets](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/10_Recurrent_Networks)
 - [11 Practical Methodology](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/11_Practical_Methodology)
 - [12 Applications](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/12_Applications)
+- [13 Linear Factor Models](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/13_Linear_Factor_Models)
