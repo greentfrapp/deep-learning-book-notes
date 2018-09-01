@@ -24,3 +24,4 @@ The annotations are made with reference to the hard copy of the book, which does
 - [12 Applications](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/12_Applications)
 - [13 Linear Factor Models](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/13_Linear_Factor_Models)
 - [14 Autoencoders](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/14_Autoencoders)
+- [15 Representation Learning](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/15_Representation_Learning)
