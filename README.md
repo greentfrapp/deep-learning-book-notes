@@ -26,3 +26,4 @@ The annotations are made with reference to the hard copy of the book, which does
 - [14 Autoencoders](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/14_Autoencoders)
 - [15 Representation Learning](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/15_Representation_Learning)
 - [16 Structured Probabilistic Models for Deep Learning](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/16_Structured_Probabilistic_Models)
+- [17 Monte Carlo Methods](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/17_Monte_Carlo_Methods)
