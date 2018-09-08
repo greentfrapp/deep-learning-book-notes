@@ -67,7 +67,7 @@ The negative log likelihood means that lower probabilities result in higher posi
 
 If ![P(x)=P(\text{event})P(\text{event})](http://latex.codecogs.com/gif.latex?P%28x%29%3DP%28%5Ctext%7Bevent%7D%29P%28%5Ctext%7Bevent%7D%29) then ![I(x)=I(\text{event})+I(\text{event})](http://latex.codecogs.com/gif.latex?I%28x%29%3DI%28%5Ctext%7Bevent%7D%29&plus;I%28%5Ctext%7Bevent%7D%29).
 
-`page 73` We can also understand Figure 3.6 in the context of KL divergence being the extra information required to convey distribution A using a code optimized for distribution B.
+`page 73` **Kullback-Liebler Divergence (KL Divergence).** We can also understand Figure 3.6 in the context of KL divergence being the extra information required to convey distribution A using a code optimized for distribution B.
 
 The left graph shows how ![q](http://latex.codecogs.com/gif.latex?q) should be distributed if we minimize ![D_{KL}(p\parallel q)](http://latex.codecogs.com/gif.latex?D_%7BKL%7D%28p%5Cparallel%20q%29). This can be seen as how we can distribute ![q](http://latex.codecogs.com/gif.latex?q) such that we can use the same 'code' for ![p](http://latex.codecogs.com/gif.latex?p) with minimal extra cost. We see that ![p](http://latex.codecogs.com/gif.latex?p) has two high-probability modes, which means that the optimal distribution for ![q](http://latex.codecogs.com/gif.latex?q) needs to be evenly spread out between these two modes as well.
 
