@@ -14,4 +14,42 @@ Such as energy-based models (EBMs) introduced in previous chapters!
 
 `page 599` Leibniz's integral rule in Equation 18.14 can be used to replace the transition from Equation 18.7 to 18.8 for continuous data.
 
+`page 612`
 
+> [...] where ![c](http://latex.codecogs.com/gif.latex?c) is explicitly introduced as an approximation of ![-\log Z(\mathbf{\theta})](http://latex.codecogs.com/gif.latex?-%5Clog%20Z%28%5Cmathbf%7B%5Ctheta%7D%29).
+
+When ![p_{\text{model}}(\mathbf{x})](http://latex.codecogs.com/gif.latex?p_%7B%5Ctext%7Bmodel%7D%7D%28%5Cmathbf%7Bx%7D%29) approaches a valid probability distribution:
+
+![p_\text{model}(\mathbf{x})=\frac{\tilde{p}_\text{model}(\mathbf{x;\theta})}{Z(\mathbf{\theta})}](http://latex.codecogs.com/gif.latex?p_%5Ctext%7Bmodel%7D%28%5Cmathbf%7Bx%7D%29%3D%5Cfrac%7B%5Ctilde%7Bp%7D_%5Ctext%7Bmodel%7D%28%5Cmathbf%7Bx%3B%5Ctheta%7D%29%7D%7BZ%28%5Cmathbf%7B%5Ctheta%7D%29%7D)
+
+So: 
+
+![\log p_\text{model}(\mathbf{x})=\log \tilde{p}_\text{model}(\mathbf{x;\theta})-\log Z(\mathbf{\theta})](http://latex.codecogs.com/gif.latex?%5Clog%20p_%5Ctext%7Bmodel%7D%28%5Cmathbf%7Bx%7D%29%3D%5Clog%20%5Ctilde%7Bp%7D_%5Ctext%7Bmodel%7D%28%5Cmathbf%7Bx%3B%5Ctheta%7D%29-%5Clog%20Z%28%5Cmathbf%7B%5Ctheta%7D%29)
+
+`page 612`
+
+> The maximum likelihood criterion would choose to set ![c](http://latex.codecogs.com/gif.latex?c) arbitrarily high, rather than setting ![c](http://latex.codecogs.com/gif.latex?c) to create a valid probability distribution.
+
+This is because the maximum likelihood criterion will simply try to maximize ![\log p_\text{model}(\mathbf{x})](http://latex.codecogs.com/gif.latex?%5Clog%20p_%5Ctext%7Bmodel%7D%28%5Cmathbf%7Bx%7D%29), which can be trivially accomplished by increasing ![c](http://latex.codecogs.com/gif.latex?c).
+
+`page 613` **Noise-Constrastive Estimation (NCE).** The algorithm here described for NCE ([Gutmann and Hyvarinen, 2010](http://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf)) is actually very similar to the algorithm for Generative Adversarial Network (GAN) by Goodfellow et al. ([2014](https://arxiv.org/abs/1406.2661)). In fact, NCE was referenced in the GAN paper in the following paragraph: 
+
+> Noise-contrastive estimation (NCE) involves training a generative model by learning the weights that make the model useful for discriminating data from a fixed noise distribution. Using a previously trained model as the noise distribution allows training a sequence of models of increasing quality. This can be seen as an informal competition mechanism similar in spirit to the formal competition used in the adversarial networks game. The key limitation of NCE is that its "discriminator" is defined by the ratio of the probability densities of the noise distribution and the model distribution, and thus requires the ability to evaluate and backpropagate through both densities.
+
+`page 615`
+
+> [...] then we say that ![M_A](http://latex.codecogs.com/gif.latex?M_A) is a better model than ![M_B](http://latex.codecogs.com/gif.latex?M_B) (or, at least, it is a better model of the test set), in the sense that it has a better test log-likelihood.
+
+Here the term *better test log-likelihood* is defined as a quantitatively larger log-likelihood. Typically, most works measure and compare *negative log likelihood (NLL)*, with its units being bits (or nats) per pixel (or character or token) depending on the domain. For an example, see the PixelCNN paper, a generative model for images by van den Oord et al. ([2016](https://arxiv.org/abs/1606.05328)) (see Tables 1 and 2 in the paper).
+
+`page 617`
+
+> In situation where ![D_{KL}(p_0||p_1)](http://latex.codecogs.com/gif.latex?D_%7BKL%7D%28p_0%7C%7Cp_1%29) is large (i.e., where there is little overlap between ![p_0](http://latex.codecogs.com/gif.latex?p_0) and ![p_1](http://latex.codecogs.com/gif.latex?p_1)) [...]
+
+The term here refers to the KL divergence between ![p_0](http://latex.codecogs.com/gif.latex?p_0) and ![p_1](http://latex.codecogs.com/gif.latex?p_1). KL divergence was previously mentioned in Chapter 3 (see page 72).
+
+`page 619`
+
+> To avoid numerical issues such as overflow, it is probably best to compute ![\log w^{(k)}](http://latex.codecogs.com/gif.latex?%5Clog%20w%5E%7B%28k%29%7D) by adding and subtracting log probabilities, rather than computing ![w^{(k)}](http://latex.codecogs.com/gif.latex?w%5E%7B%28k%29%7D) by multiplying and dividing probabilities.
+
+This was mentioned previously in Chapter 4.
