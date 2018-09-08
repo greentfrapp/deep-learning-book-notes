@@ -28,3 +28,4 @@ The annotations are made with reference to the hard copy of the book, which does
 - [16 Structured Probabilistic Models for Deep Learning](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/16_Structured_Probabilistic_Models)
 - [17 Monte Carlo Methods](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/17_Monte_Carlo_Methods)
 - [18 Confronting the Partition Function](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/18_Partition_Function)
+- [19 Approximate Inference](https://github.com/greentfrapp/deep-learning-book-notes/tree/master/19_Approximate_Inference)
